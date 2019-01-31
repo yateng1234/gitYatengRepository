@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <title>{{msg.home}}</title>
+	    <link href="css/mui.min.css" rel="stylesheet"/>
+	    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+	    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	    <script src="js/mui.min.js"></script>
+	    <script type="text/javascript" src="js/vue.min.js"></script>
+	    <script type="text/javascript" src="js/lang.js"></script>
+	</head>
+	
+	<body class="body-index">
+		<div class="index-enter container">
+			<header class="mui-bar-header mui-bar mui-bar-nav">
+				<h1 class="mui-title"><img height="40" src="img/logo.jpg" alt="" /></h1>
+				<a href="javaScript:void(0);" onclick="clickMessage()" class="mui-icon iconfont mui-talk mui-pull-right" ><span id="userCount" style="margin:-2px 4px;font-size: 12px;color:#FF473D"></span><span v-if=permissions.messageCount!="0" ></span></a>
+			</header>
+			<div class="index-enter-content">
+				<div class="banner">
+					<img src="img/banner@2x.png" />
+				</div>
+				<h2 class="title">{{msg.enterpriseProcurement}}</h2>
+				<ul class="row purchase-list index-list">
+					<li class="mui-col-xs-3 href-box">
+						<img src="img/index/icon-1@3x.png"/>
+						<span id=""  class="count"></span>
+						<p>{{msg.theAgreementProduct}}</p>
+						<a href="agreement_goods_list.html"></a>
+					</li>
+					<li class="mui-col-xs-3 href-box">
+						<img src="img/index/icon-2@3x.png"/><span  class="count" id="shopCount">0</span>
+						<p>{{msg.shoppingCart}}</p>
+						<a href="shopping_cart.html"></a>
+					</li>
+					<li class="mui-col-xs-3 href-box" >
+						<img src="img/index/icon-3@3x.png"/><span  class="count" id="applyCount">0</span>
+						<p>{{msg.myApplicationForm}}</p>
+						<a href="request_list.html"></a>
+					</li>
+					<li class="mui-col-xs-3 href-box">
+						<img src="img/index/icon-4@3x.png"/><span class="count" id="orderCount">0</span>
+						<p>{{msg.order}}</p>
+						<a href="order_list.html?item=-1"></a>
+					</li>
+				</ul>
+				
+				<h2 class="title">{{msg.toDoBusiness}}</h2>
+				<ul class="mui-table-view wait-list">
+				
+			       <!--  <li v-if=localStorage.IS_PURCHASE=="1" class="mui-table-view-cell">
+			        		<img src="img/index/icon-5@3x.png" alt="" />
+			            <a href="request_audit.html" class="mui-navigate-right">
+			                {{msg.toApplyForApprovalOfPurchase}}
+			            </a>
+			            <span class="count" id="purchaseApplycount">{{permissions.purchaseApplycount}}</span>
+			        </li>
+			        
+			        <li v-if=localStorage.IS_NEEDAPPLY=="1"  class="mui-table-view-cell">
+			        		<img src="img/index/icon-6@3x.png" alt="" />
+			            <a href="repertory_audit.html" class="mui-navigate-right">
+			            		{{msg.toApplyForApproval}}
+			            </a>
+			            	<span class="count" id="needApplycount">{{permissions.needApplycount}}</span>
+			        </li> -->
+			        <li class="mui-table-view-cell">
+			        		<img src="img/index/icon-5@3x.png" alt="" />
+			            <a href="request_audit.html" class="mui-navigate-right">
+			                {{msg.toApplyForApprovalOfPurchase}}
+			            </a>
+			            <span class="count" id="purchaseApplycount">{{permissions.purchaseApplycount}}</span>
+			        </li>
+			        
+			        <li class="mui-table-view-cell">
+			        		<img src="img/index/icon-6@3x.png" alt="" />
+			            <a href="repertory_audit.html" class="mui-navigate-right">
+			            		{{msg.toApplyForApproval}}
+			            </a>
+			            	<span class="count" id="needApplycount">{{permissions.needApplycount}}</span>
+			        </li> 
+			        
+			        
+			  </ul>
+			    <h2 class="title">{{msg.functionalAreas}}</h2>
+			    <ul class="mui-table-view func-list">
+		            <li class="mui-table-view-cell">
+		            	<img src="img/index/icon-7@3x.png" alt="" /><input type="hidden" id="infoStr" value="0">
+		                <a href="javascript:void(0);" onclick="fold()" class="mui-navigate-right">
+		                    {{msg.businessManagement}}
+		                </a>
+		            </li>
+		            
+		             <li class="mui-table-view-cell" style="display: none;height: 45px;margin-top: -4px;" id="reperorylist" >
+		            	<img src="img/index/icon-5@3x.jpg"  style="margin-left: 28px;"/>
+		                <a href="repertory_list.html" class="mui-navigate-right"  style="margin-left: 26px;">
+		                    {{msg.InventoryListing}}
+		                </a>
+		            </li>
+		             <li class="mui-table-view-cell" style="display: none;height: 45px;margin-top: -4px;" id="receive">
+		             <img src="img/index/icon-10-bak@3x.png" alt="" style="margin-left: 28px;"/>
+		                <a href="repertory_already.html" class="mui-navigate-right" style="margin-left: 26px;">
+		                    {{msg.recipientsRecords}}
+		                </a>
+		            </li>
+		            
+		            <li class="mui-table-view-cell">
+		            		<img src="img/index/icon-8@3x.png" alt="" />
+		                <a href="agreement_list.html" class="mui-navigate-right">
+		                    {{msg.agreementList}}
+		                </a>
+		                <span class="count"></span>
+		            </li>
+		          
+		            <li class="mui-table-view-cell">
+		            		<img src="img/index/icon-10@3x.png" alt="" />
+		                <a class="mui-navigate-right">
+		                    {{msg.technologyBBS}}
+		                </a>
+		                <span class="count"></span>
+		            </li>
+		            <li class="mui-table-view-cell" style="display:none;" >
+		            		<img src="img/index/icon-11@3x.png" alt="" />
+		                <a class="mui-navigate-right">
+		                    {{msg.theBidding}}
+		                </a>
+		                <span class="count"></span>
+		            </li>
+		         </ul>
+			</div>
+		</div>
+		<div class="footer-nav"></div>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var indexData = {
+					init : function(){
+						var that = this;
+						that.getUserPermissions();
+						that.getShoppingCount();
+						that.getNoApplyCount();
+						that.getNoCompleteOrderCount();
+						that.getMessageCount();
+					},
+					//获取用户权限
+				    getUserPermissions : function(){
+				    		$.ajax({
+							type:"post",
+							url:sd.ajaxUrl+"admin/enterpriseAgreementForApp/main.do",
+							async:true,
+							dataType : "json",
+							data : {
+								id : localStorage.USER_ID,
+								enterpriseId:localStorage.ENTERPRISE_ID
+							},
+							beforeSend : function(){
+								ajaxBeforesend();	
+							},
+							complete : function(){
+								ajaxComplete();
+							},
+							success: function(d){
+								if(d.success == true){
+									msgLang.permissions = d;
+									var purchaseApplycount=d.purchaseApplycount;
+									if(purchaseApplycount==0){
+										$("#purchaseApplycount").css("background-color","#bdb7b7");
+									}
+									var needApplycount=d.needApplycount;
+									if(needApplycount==0){
+										$("#needApplycount").css("background-color","#bdb7b7");
+									}
+								}else{
+									ajaxError();
+								}
+							},
+							error : function(){
+								ajaxError();
+							}
+						});
+				    },
+				    getShoppingCount:function(){
+					    	$.ajax({
+								type:"post",
+								url:sd.ajaxUrl+"admin/productForAppAction/getProductCarCount.do",
+								async:true,
+								dataType : "json",
+								data : {userId:localStorage.USER_ID,enterpriseId:localStorage.ENTERPRISE_ID},
+								beforeSend : function(){
+									ajaxBeforesend();
+								},
+								complete : function(){
+									ajaxComplete();
+								},
+								success : function(data){
+									if(data.success==true){
+									var count = data.count;
+									$("#shopCount").html(count);
+									if(count==0){
+										$("#shopCount").css("background-color","#bdb7b7");				
+									}
+									}
+								}
+					    }) 
+				    },
+				    getNoApplyCount:function(){
+				    	var sinfo="1";
+				    	$.ajax({
+							type:"post",
+							url:sd.ajaxUrl+"admin/productOrderForApp/purchaseNoApplyCount.do",
+							async:true,
+							dataType : "json",
+							data :{
+								userId : localStorage.USER_ID,
+								enterpriseId:localStorage.ENTERPRISE_ID,
+								state : sinfo
+							},
+							beforeSend : function(){
+								ajaxBeforesend();
+							},
+							complete : function(){
+								ajaxComplete();
+							},
+							success : function(data){
+								if(data.success==true){
+									var count = data.count;
+									$("#applyCount").html(count);
+									if(count==0){
+										$("#applyCount").css("background-color","#bdb7b7");
+									}
+								}
+							}
+				    }) 
+				    },
+				    getNoCompleteOrderCount:function(){
+				    	$.ajax({
+							type:"post",
+							url:sd.ajaxUrl+"admin/productOrderForApp/orderListCount.do",
+							async:true,
+							dataType : "json",
+							data : {userId : localStorage.USER_ID,
+								    enterpriseId : localStorage.ENTERPRISE_ID},
+							beforeSend : function(){
+								ajaxBeforesend();
+							},
+							complete : function(){
+								ajaxComplete();
+							},
+							success : function(data){
+								var count = data.count;
+								$("#orderCount").html(count);
+								if(count==0){
+									$("#orderCount").css("background-color","#bdb7b7");
+								}
+							}
+				    }) 
+				    },
+				    getMessageCount:function(){
+				    	var isread="0";
+					    	$.ajax({
+								type:"post",
+								url:sd.ajaxUrl+"admin/sysMessageForApp/findlistForCount.do",
+								async:true,
+								dataType : "json",
+								data : {userId :localStorage.USER_ID,isRead:isread},
+								beforeSend : function(){
+									ajaxBeforesend();
+								},
+								complete : function(){
+									ajaxComplete();
+								},
+								success : function(data){
+									if(data.success == true){
+										var count = data.count;
+										$("#userCount").html(count);
+									}else{
+										$("#userCount").html("0");
+									}
+								},
+								error : function(){
+									ajaxError();
+								}
+					    }) 
+				    }
+				}
+				indexData.init();
+			})
+			
+			function fold(){
+				var state=$("#infoStr").val();
+				if(state=="0"){
+					$("#reperorylist").slideDown(100);
+					$("#receive").slideDown(100);
+					$("#infoStr").val("1");
+				}else if(state=="1"){
+					$("#reperorylist").slideUp(100);
+					$("#receive").slideUp(100);
+					$("#infoStr").val("0");
+				}
+				
+			}
+			
+			function clickMessage(){
+				var isread="0";
+		    	$.ajax({
+					type:"post",
+					url:sd.ajaxUrl+"admin/sysMessageForApp/findlistForCount.do",
+					async:true,
+					dataType : "json",
+					data : {userId :localStorage.USER_ID,isRead:isread},
+					beforeSend : function(){
+						ajaxBeforesend();
+					},
+					complete : function(){
+						ajaxComplete();
+					},
+					success : function(data){
+						if(data.success == true){
+							$("#userCount").html(data.count);
+						}else{
+							$("#userCount").html("0");
+						}
+						window.open("message.html","_self");
+					},
+					error : function(){
+						ajaxError();
+					}
+		    	}) 
+			}
+		</script>
+	</body>
+</html>
