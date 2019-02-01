@@ -1,0 +1,32 @@
+前端开发规范：
+
+html篇：
+1.使用pug模板
+	优势：无需结束标签、强制统一格式、代码复用和维护、标签写法与CSS相同
+2.命名规范
+	组件命名：小写用-分隔,例如：el-form-item、user-add-or-update
+
+
+JS篇:
+1.eslint规范,自动检测，不合则则编译不通过
+	(1).禁用var，用let和const代替
+	(2).不能有无法执行的代码
+	(3).禁止无用的表达式
+	(4).一行结束后面不要有空格
+	(5).风格要不要有无用的空格什么的
+2.命名规范
+	变量、方法命名: 驼峰命名,例如：validatePassword、userName、dataRule、dataFormSubmit()
+3.慎用Jquery	、bootstrap等较大的插件
+4.多次使用的方法或页面一定要组件化
+
+
+CSS篇
+1.推荐 scss ，不限于其他lang
+2.样式不要直接写在html里 （style = “”）
+
+
+引用组件、插件篇：
+1.组件放到components目录下
+2.插件放到plugin目录下
+
+BUG提交地址：http://gitlab.suntrayoa.com/dev-platform-ms/platform-front/issues/new
