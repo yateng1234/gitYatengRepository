@@ -1,5 +1,5 @@
 export default {
-  path: '/sys/user',
+  path:'/sys/user',
   title: '角色与权限',
   icon: 'user-circle',
   children: [
