@@ -27,10 +27,11 @@ const frameIn = [
     redirect: { name: 'sys-user' },
     component: layoutHeaderAside,
     children: (pre => [
-      { path: 'admin', name: `${pre}admin`, component: () => import('@/pages/sys/user'), meta: { ...meta, title: '管理员列表' } },
-      { path: 'role', name: `${pre}role`, component: () => import('@/pages/sys/role'), meta: { ...meta, title: '角色管理' } },
-      { path: 'menu', name: `${pre}menu`, component: () => import('@/pages/sys/menu'), meta: { ...meta, title: '菜单管理' } },
-      { path: 'page-cache/off', name: `${pre}page-cache-off`, component: () => import('@/pages/demo/playground/page-cache/off.vue'), meta: { ...meta, title: '关闭缓存' } }
+        { path: 'admin', name: `${pre}admin`, component: () => import('@/pages/sys/user'), meta: { ...meta, title: '管理员列表' } },
+        { path: 'role', name: `${pre}role`, component: () => import('@/pages/sys/role'), meta: { ...meta, title: '角色管理' } },
+        { path: 'menu', name: `${pre}menu`, component: () => import('@/pages/sys/menu'), meta: { ...meta, title: '菜单管理' } },
+        { path: 'test', name: `${pre}test`, component: () => import('@/pages/sys/test'), meta: { ...meta, title: '测试增删改' } },
+        { path: 'page-cache/off', name: `${pre}page-cache-off`, component: () => import('@/pages/demo/playground/page-cache/off.vue'), meta: { ...meta, title: '关闭缓存' } }
     ])('sys-user-')
   },
   {

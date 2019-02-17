@@ -16,6 +16,8 @@ import demoD2Crud from './modules/demo-d2-crud'
 import demoFrame from './modules/demo-frame'
 // 角色与权限
 import sysUser from './modules/sys-user'
+// 测试
+//import testOne from './modules/test-one'
 
 // 菜单 侧边栏
 export const menuAside = [
@@ -67,5 +69,10 @@ export const menuHeader = [
     ]
   },
   demoPlayground,
-  demoBusiness
+  demoBusiness,
+    {
+        path: '/sys/user/test',
+        title: '管理员测试Demo列表',
+        icon: 'users'
+    }
 ]
