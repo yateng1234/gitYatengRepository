@@ -9,6 +9,7 @@
         el-tree(:data='menuList', :props='menuListTreeProps', node-key='menuId', ref='menuListTree', :default-expand-all='true', show-checkbox='')
     span.dialog-footer(slot='footer')
       el-button(@click='visible = false') 取消
+      
       el-button(type='primary', @click='dataFormSubmit()') 确定
 </template>
 
